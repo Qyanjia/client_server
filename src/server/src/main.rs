@@ -8,9 +8,9 @@ use std::io::{ErrorKind, Read, Write};
 use std::net::TcpListener;
 use std::sync::mpsc;
 use std::thread;
-
+pub mod message;
 // Localhost with a port in it
-const LOCAL_HOST: &str = "127.0.0.1:8080";
+const LOCAL_HOST: &str = "127.0.0.1:8081";
 
 // The buffer size of messages
 const MESSAGE_SIZE: usize = 32;
@@ -47,7 +47,7 @@ fn main()
         // socket: TCP stream 
         // address: socket address 
         if let Ok((mut socket, address)) = listener.accept()
-        {
+        {   
             println!("Client {}: CONNECTED", address);
             // Clone sender
             // The socket tries to clone it and then push it to clients vector 
